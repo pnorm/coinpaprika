@@ -1,6 +1,10 @@
 # Standard Python libraries
 import argparse
 
+# local application imports
+from client import Client
+from symbols import fetch_symbols, check_if_symbol_available
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -76,6 +80,8 @@ def main():
     if args.command == 'average-price-by-month':
         pass
         # Coin validation
+        fetch_symbols()
+        check_if_symbol_available(args.coin)
 
         # Converting and validating date
 
@@ -90,6 +96,8 @@ def main():
     elif args.command == 'consecutive-increase':
         pass
         # Coin validation
+        fetch_symbols()
+        check_if_symbol_available(args.coin)
 
         # Converting and validating date
 
@@ -104,7 +112,9 @@ def main():
     elif args.command == 'export':
         pass
         # Coin validation
-
+        fetch_symbols()
+        check_if_symbol_available(args.coin)
+        
         # Converting and validating date
 
         # Check if start date before end date
