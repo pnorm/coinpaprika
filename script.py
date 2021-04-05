@@ -2,6 +2,7 @@
 import argparse
 
 # local application imports
+from calculator import Calculator
 from client import Client
 from date_validation import *
 from symbols import fetch_symbols, check_if_symbol_available
@@ -94,10 +95,15 @@ def main():
         check_if_start_before_end(start_date, end_date)
 
         # Creating instance of calculator
+        calc = Calculator(start_date, end_date, args.coin)
 
         # Calculating average price by month
+        avg_prices = calc.calculate_average_price_by_month()
 
         # Priting dates and average prices
+        print(f"Date \t Average Price ($)")
+        for d, price in avg_prices.items():
+            print(f"{d:8} {price:.5f}")
 
     elif args.command == 'consecutive-increase':
         # Coin validation
