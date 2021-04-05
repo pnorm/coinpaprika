@@ -43,21 +43,7 @@ class HistoricalValue:
         }
 
 def main():
-    # Testing
-    client = Client()
-    ohlc = client.get_historical_values()
-
-    # Converts to HistoricalValue objects
-    historical_values = []
-    for o in ohlc:
-        historical_values.append(HistoricalValue(o["time_close"], o["close"]))
-    pprint(historical_values)
-
-    # Convert to dicts
-    list_of_dicts = []
-    for value in historical_values:
-        list_of_dicts.append(value.to_dict())
-    pprint(list_of_dicts)
+    pass
 
 if __name__=="__main__":
     main()

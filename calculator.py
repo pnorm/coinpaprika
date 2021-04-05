@@ -93,21 +93,7 @@ class Calculator:
 
 
 def main():
-    calc = Calculator(date(2020, 11, 1), date(2021, 2, 28), "btc-bitcoin")
-    avg_prices = calc.calculate_average_price_by_month()
-
-    # Priting dates and average prices
-    print(f"Date \t Average Price ($)")
-    for d, price in avg_prices.items():
-        print(f"{d:8} {price:.5f}")
-
-    # Longest consecutive increasing period
-    longest = calc.find_longest_consecutive_increase()
-
-    print(f""" <<< Longest consecutive period was from \
-{longest["Dates"][0].date()} to {longest["Dates"][-1].date()} with \
-increase of ${round(longest["Price Increase"], 2)} >>>""")
-
+    pass
 
 if __name__ == "__main__":
     main()

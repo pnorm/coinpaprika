@@ -38,7 +38,7 @@ def check_if_symbol_available(symbol: str) -> Union[bool, None]:
             sys.exit()
 
 def main():
-    fetch_symbols()
+    pass
 
 if __name__=="__main__":
     main()
