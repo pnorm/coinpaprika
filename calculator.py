@@ -9,7 +9,10 @@ from historical_values import HistoricalValue
 
 
 class Calculator:
-    """Class Container which implements methods to calculate..."""
+    """
+    Class which implements methods to calculate average price by month and to
+    find longest consecutive increase.
+    """
 
     def __init__(self, start_date: date, end_date: date, coin: str) -> None:
         self.historical_values = []
@@ -53,6 +56,41 @@ class Calculator:
         average_price_by_month = dict(sorted(average_price_by_month.items()))
         return average_price_by_month
 
+    def find_longest_consecutive_increase(self) -> Dict:
+        """
+        Finds longest consecutive increase for a given historical data.
+        Returns: Dict
+        """
+        previous_value = self.historical_values[0]
+        initial_dict = {
+                "Dates": [],
+                "Price Increase": 0,
+                "Num_days": 0
+            }
+        temp_dict = deepcopy(initial_dict)
+        longest_increasing = deepcopy(temp_dict)
+
+        # I assume first value is not increasing.
+        for actual_value in self.historical_values:
+            # Determining if value is greater than previous
+            if actual_value > previous_value:
+                # Price increase
+                temp_increase = actual_value.close - previous_value.close
+                # Longest consecutive increase saved to dictionary
+                temp_dict["Dates"].append(actual_value.time_close)
+                temp_dict["Price Increase"] += temp_increase
+                temp_dict["Num_days"] += 1
+                if longest_increasing["Num_days"] < temp_dict["Num_days"]:
+                    longest_increasing = deepcopy(initial_dict)
+                    longest_increasing = temp_dict.copy()
+            else:
+                # Reset temporary dict
+                temp_dict = deepcopy(initial_dict)
+            # Remember value for later use
+            previous_value = actual_value
+
+        return longest_increasing
+
 
 def main():
     calc = Calculator(date(2020, 11, 1), date(2021, 2, 28), "btc-bitcoin")
@@ -62,6 +100,13 @@ def main():
     print(f"Date \t Average Price ($)")
     for d, price in avg_prices.items():
         print(f"{d:8} {price:.5f}")
+
+    # Longest consecutive increasing period
+    longest = calc.find_longest_consecutive_increase()
+
+    print(f""" <<< Longest consecutive period was from \
+{longest["Dates"][0].date()} to {longest["Dates"][-1].date()} with \
+increase of ${round(longest["Price Increase"], 2)} >>>""")
 
 
 if __name__ == "__main__":
