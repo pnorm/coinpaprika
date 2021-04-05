@@ -42,6 +42,7 @@ class HistoricalValue:
             "Price": self.close
         }
 
+
 def main():
     pass
 
