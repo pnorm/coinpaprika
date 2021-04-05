@@ -17,8 +17,23 @@ class HistoricalValue:
     def __repr__(self):
         return f"<Date: {self.time_close.date()}, Price: {self.close}>"
 
-    def __cmp__(self, other):
-        return cmp(self.close, other.close)
+    def __eq__(self, other):
+        return self.close == other.close
+
+    def __ne__(self, other):
+        return self.close != other.close
+
+    def __gt__(self, other):
+        return self.close > other.close
+
+    def __lt__(self, other):
+        return self.close < other.close
+
+    def __ge__(self, other):
+        return self.close >= other.close
+
+    def __le__(self, other):
+        return self.close <= other.close
 
     def to_dict(self) -> Dict:
         """Converts HistoricalValue object to dict."""
