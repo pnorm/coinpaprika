@@ -52,13 +52,13 @@ Invalid date pattern
 ```sh
 (env):$ python script.py average-price-by-month --start-date=2020-02 --end-date=2020-03 --coin=eth-ether
 
-Sorry, we don\'t have that coin.
+Sorry, we don't have that coin.
 ```
  - Example 5
 ```sh
 (env):$ python script.py average-price-by-month --start-date=2020-02 --end-date=2020-01
 
-Start date can\'t be after end date.
+Start date can't be after end date.
 ```
 #### 4.2. Find longest consecutive period in which price was increasing.
  - Example 1
@@ -78,7 +78,7 @@ You can fetch max 366 rows in one request. Change date range.
 ```sh
 (env):$ python script.py consecutive-increase --start-date=2020-02-01 --end-date=2019-01-01 --coin=eth-ethereum
 
-Start date can\'t be after end date.
+Start date can't be after end date.
 ```
  - Example 4
 ```sh
@@ -105,7 +105,7 @@ Data successfully saved to the JSON file
 (env):$ ls data
 eth-ethereum_test.csv  eth-ethereum_test.json
 ```
-Example 3
+ - Example 3
 ```sh
 (env):$ python script.py export --start-date=2020-02-01 --end-date=2021-01-01 --coin=eth-ethereum --format=txt --file=test
 
