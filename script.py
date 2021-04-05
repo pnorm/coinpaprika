@@ -124,9 +124,12 @@ def main():
         longest = calc.find_longest_consecutive_increase()
 
         # Printing result
-        print(f""" <<< Longest consecutive period was from \
+        try:
+            print(f""" <<< Longest consecutive period was from \
 {longest["Dates"][0].date()} to {longest["Dates"][-1].date()} with \
 increase of ${round(longest["Price Increase"], 2)} >>>""")
+        except IndexError:
+            print("There is no increase in a given period of time.")
 
     elif args.command == 'export':
         # Coin validation
