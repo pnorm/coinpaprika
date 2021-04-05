@@ -1,0 +1,3 @@
+pandas
+requests
+'python-language-server[all]'
