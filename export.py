@@ -1,5 +1,5 @@
 # Standard libraries
-from datetime import date
+from datetime import date, datetime
 import json
 import os
 
@@ -22,6 +22,7 @@ class Export:
     def _subset_columns(self) -> pd.DataFrame:
         df = pd.json_normalize(self.response)
         df = df[['time_close', 'close']]
+        df['time_close'] = df['time_close'].apply(lambda x: x[:10])
         df.columns = ['Date', 'Price']
         return df
 
