@@ -3,6 +3,7 @@ import argparse
 
 # local application imports
 from client import Client
+from date_validation import *
 from symbols import fetch_symbols, check_if_symbol_available
 
 
@@ -78,14 +79,19 @@ def main():
 
     # Run commands depending on positional argument
     if args.command == 'average-price-by-month':
-        pass
         # Coin validation
         fetch_symbols()
         check_if_symbol_available(args.coin)
 
         # Converting and validating date
+        start_date = date_pattern(args.start_date, "%Y-%m")
+        end_date = date_pattern(args.end_date, "%Y-%m")
+
+        # Convert end date, e.g. 2020-02-01 -> 2020-02-29
+        end_date = convert_end_date(end_date)
 
         # Check if start date before end date
+        check_if_start_before_end(start_date, end_date)
 
         # Creating instance of calculator
 
@@ -94,14 +100,16 @@ def main():
         # Priting dates and average prices
 
     elif args.command == 'consecutive-increase':
-        pass
         # Coin validation
         fetch_symbols()
         check_if_symbol_available(args.coin)
 
         # Converting and validating date
+        start_date = date_pattern(args.start_date)
+        end_date = date_pattern(args.end_date)
 
         # Check if start date before end date
+        check_if_start_before_end(start_date, end_date)
 
         # Creating instance of calculator
 
@@ -110,13 +118,19 @@ def main():
         # Printing result
 
     elif args.command == 'export':
-        pass
         # Coin validation
         fetch_symbols()
         check_if_symbol_available(args.coin)
-        
+
         # Converting and validating date
+        start_date = date_pattern(args.start_date)
+        end_date = date_pattern(args.end_date)
 
         # Check if start date before end date
+        check_if_start_before_end(start_date, end_date)
 
         # Export depending on format
+
+
+if __name__=="__main__":
+    main()
