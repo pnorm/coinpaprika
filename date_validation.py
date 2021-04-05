@@ -32,6 +32,13 @@ def last_day_of_month(end_date: date) -> int:
     num_days = monthrange(end_date.year, end_date.month)[1]
     return num_days
 
+def limit_validation(start_date: date, end_date: date) -> int:
+    """Coinpaprika API allows to fetch max 366 result rows in one request."""
+    num_days = end_date - start_date
+    if num_days.days > 366:
+        print("You can fetch max 366 rows in one request. Change date range.")
+        sys.exit()
+
 
 def main():
     pass

@@ -5,6 +5,7 @@ import argparse
 from calculator import Calculator
 from client import Client
 from date_validation import *
+from export import Export
 from symbols import fetch_symbols, check_if_symbol_available
 
 
@@ -94,6 +95,9 @@ def main():
         # Check if start date before end date
         check_if_start_before_end(start_date, end_date)
 
+        # Limit of result rows validation, max 366
+        limit_validation(start_date, end_date)
+
         # Creating instance of calculator
         calc = Calculator(start_date, end_date, args.coin)
 
@@ -116,6 +120,9 @@ def main():
 
         # Check if start date before end date
         check_if_start_before_end(start_date, end_date)
+
+        # Limit of result rows validation, max 366
+        limit_validation(start_date, end_date)
 
         # Creating instance of calculator
         calc = Calculator(start_date, end_date, args.coin)
@@ -142,6 +149,9 @@ increase of ${round(longest["Price Increase"], 2)} >>>""")
 
         # Check if start date before end date
         check_if_start_before_end(start_date, end_date)
+
+        # Limit of result rows validation, max 366
+        limit_validation(start_date, end_date)
 
         # Export depending on format
 
