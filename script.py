@@ -154,6 +154,14 @@ increase of ${round(longest["Price Increase"], 2)} >>>""")
         limit_validation(start_date, end_date)
 
         # Export depending on format
+        e = Export(start_date, end_date, args.coin, args.filename)
+
+        if args.format == "csv":
+            e.to_csv()
+        elif args.format == "json":
+            e.to_json()
+        else:
+            print("You can export only to csv or json.")
 
 
 if __name__=="__main__":
