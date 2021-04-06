@@ -33,7 +33,7 @@ class Client:
             print("Can't fetch the data. The issue is on coinparprika's side.")
             sys.exit()
         elif re.match("^4[0-9]{2}$", str(response.status_code)):
-            if reponse.status_code == 429:
+            if response.status_code == 429:
                 print("Breaking a request rate limit. Single IP address can \
 send less than 10 requests per second")
             print("Invalid requests ")
