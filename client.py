@@ -1,12 +1,11 @@
 # Standard Python libraries
-from datetime import date
-import json
-from typing import Dict, List, Union
-
 # 3rd party libraries
 import re
-import requests
 import sys
+from datetime import date
+from typing import Dict, List, Union
+
+import requests
 
 
 class Client:
@@ -22,7 +21,8 @@ class Client:
             "end": end,
         }
 
-    def _check_status_codes(self, response) -> bool:
+    @staticmethod
+    def _check_status_codes(response) -> None:
         """Check response code. HTTP response status codes indicate whether a
         specific HTTP request has been successfully completed.
             Successful responses (200–299)
@@ -49,14 +49,15 @@ send less than 10 requests per second")
         try:
             url = f"{self.BASE_URL}/coins/{self.coin}/ohlcv/historical"
             response = requests.get(url, self.query_parameters)
-        except requests.exceptions.RequestException as e:
+        except requests.exceptions.RequestException:
             print("Connection problem. Check arguments.")
         else:
             # print(f"Connection succeed for url:\n{response.url}")
             self._check_status_codes(response)
             return response.json()
 
-    def get_coin_symbols(self) -> List[Dict[str, Union[str, int]]]:
+    @staticmethod
+    def get_coin_symbols() -> List[Dict[str, Union[str, int]]]:
         """
         Fetch all symbols.
         Returns List[Dict]

@@ -1,10 +1,9 @@
 # Standard Python libraries
-from datetime import datetime, date
-from pprint import pprint
+from datetime import datetime
 from typing import Dict
 
+
 # local application imports
-from client import Client
 
 
 class HistoricalValue:
@@ -46,5 +45,6 @@ class HistoricalValue:
 def main():
     pass
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()

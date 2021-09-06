@@ -1,5 +1,4 @@
 # Standard Python libraries
-import json
 import os
 import pickle
 import sys
@@ -26,6 +25,7 @@ def fetch_symbols() -> None:
         with open(os.path.join("data", filename), "wb") as file:
             pickle.dump(symbols, file)
 
+
 def check_if_symbol_available(symbol: str) -> Union[bool, None]:
     """Check if coin symbol passed as an argument is available."""
     if symbol != 'btc-bitcoin':
@@ -37,8 +37,10 @@ def check_if_symbol_available(symbol: str) -> Union[bool, None]:
             print("Sorry, we don't have that coin.")
             sys.exit()
 
+
 def main():
     pass
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()

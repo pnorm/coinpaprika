@@ -3,7 +3,6 @@ import argparse
 
 # local application imports
 from calculator import Calculator
-from client import Client
 from date_validation import *
 from export import Export
 from symbols import fetch_symbols, check_if_symbol_available
@@ -164,5 +163,5 @@ increase of ${round(longest["Price Increase"], 2)} >>>""")
             print("You can export only to csv or json.")
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()

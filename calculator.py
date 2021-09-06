@@ -41,14 +41,14 @@ class Calculator:
         # Calculate average price by month
         average_price_by_month = {}
         for group in groups:
-            sum = 0
+            sum_ = 0
             counter = 0
             for value in self.historical_values:
                 if str(value.time_close)[:7] == group:
-                    sum += value.close
+                    sum_ += value.close
                     counter += 1
             try:
-                average_price_by_month[group] = sum / counter
+                average_price_by_month[group] = sum_ / counter
             except ZeroDivisionError:
                 print("ZeroDivisionError when calculating average price.")
 
@@ -94,6 +94,7 @@ class Calculator:
 
 def main():
     pass
+
 
 if __name__ == "__main__":
     main()

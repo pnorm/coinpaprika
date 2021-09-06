@@ -1,7 +1,7 @@
 # Standard libraries
-from datetime import date, datetime
 import json
 import os
+from datetime import date
 
 # 3rd party libraries
 import pandas as pd
